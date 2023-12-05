@@ -34,7 +34,8 @@ namespace NTier101_Live
 
             return Connection;
         }
-
+        
+        // Klasik CRUD İşlemleri
         // Select kısmı
         public DataTable executeSelectQuery(string _query, SqlParameter[] _parameters)
         {
@@ -90,6 +91,54 @@ namespace NTier101_Live
 
             }
 
+
+            return true;
+        }
+
+        // Update kısmı
+        public bool executeUpdateQuery(string _query, SqlParameter[] _parameters)
+        {
+            SqlCommand sqlCommand = new SqlCommand();
+
+            try
+            {
+                sqlCommand.Connection = openConnection();
+                sqlCommand.CommandText = _query;
+                sqlCommand.Parameters.AddRange(_parameters);
+                dataAdapter.UpdateCommand = sqlCommand;
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Hata : " + e.ToString);
+
+                return false;
+
+            }
+
+
+            return true;
+        }
+
+        // Delete kısmı
+        public bool executeDeleteQuery(string _query)
+        {
+            SqlCommand sqlCommand = new SqlCommand();
+
+            try
+            {
+                sqlCommand.Connection = openConnection();
+                sqlCommand.CommandText = _query;
+                dataAdapter.DeleteCommand = sqlCommand;
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Hata : " + e.ToString);
+
+                return false;
+
+            }
 
             return true;
         }
