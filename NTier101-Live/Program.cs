@@ -1,3 +1,5 @@
+using NTier101_Live.PL;
+
 namespace NTier101_Live
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace NTier101_Live
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new frmLogin());
         }
     }
 }
