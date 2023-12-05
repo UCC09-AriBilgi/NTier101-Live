@@ -33,7 +33,8 @@
             // 
             // btonExit
             // 
-            btonExit.Location = new Point(713, 415);
+            btonExit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btonExit.Location = new Point(732, 415);
             btonExit.Name = "btonExit";
             btonExit.Size = new Size(75, 23);
             btonExit.TabIndex = 0;
@@ -45,7 +46,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(819, 450);
             Controls.Add(btonExit);
             Name = "frmMain";
             Text = "Ana Ekran";

@@ -19,7 +19,7 @@ namespace NTier101_Live
         public clsDBOperation()
         {
             dataAdapter = new SqlDataAdapter(); 
-            Connection = new SqlConnection(@"Data Source=BABEGT\SQLEXPRESS;Initial Catalog=NTier101Db;Integrated Security=True;");
+            Connection = new SqlConnection(@"Data Source=BABEGT\SQLEXPRESS;Initial Catalog=NTier101Db;Integrated Security=True;TrustServerCertificate=True;");
         }
 
         private SqlConnection openConnection()

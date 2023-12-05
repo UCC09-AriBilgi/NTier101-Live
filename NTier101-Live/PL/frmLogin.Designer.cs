@@ -33,12 +33,15 @@
             label2 = new Label();
             tboxUserPassw = new TextBox();
             btonLogin = new Button();
+            pictureBox1 = new PictureBox();
+            label3 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 20);
+            label1.Location = new Point(141, 70);
             label1.Name = "label1";
             label1.Size = new Size(73, 15);
             label1.TabIndex = 0;
@@ -46,7 +49,7 @@
             // 
             // tboxUserName
             // 
-            tboxUserName.Location = new Point(103, 17);
+            tboxUserName.Location = new Point(232, 67);
             tboxUserName.MaxLength = 10;
             tboxUserName.Name = "tboxUserName";
             tboxUserName.Size = new Size(100, 23);
@@ -55,7 +58,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 62);
+            label2.Location = new Point(141, 112);
             label2.Name = "label2";
             label2.Size = new Size(78, 15);
             label2.TabIndex = 2;
@@ -63,7 +66,7 @@
             // 
             // tboxUserPassw
             // 
-            tboxUserPassw.Location = new Point(103, 59);
+            tboxUserPassw.Location = new Point(232, 109);
             tboxUserPassw.MaxLength = 10;
             tboxUserPassw.Name = "tboxUserPassw";
             tboxUserPassw.Size = new Size(100, 23);
@@ -71,19 +74,43 @@
             // 
             // btonLogin
             // 
-            btonLogin.Location = new Point(103, 110);
+            btonLogin.Location = new Point(232, 160);
             btonLogin.Name = "btonLogin";
             btonLogin.Size = new Size(75, 23);
             btonLogin.TabIndex = 4;
             btonLogin.Text = "Giriş";
             btonLogin.UseVisualStyleBackColor = true;
+            btonLogin.Click += btonLogin_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.kullaniciGirisi;
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(100, 94);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.FromArgb(0, 192, 192);
+            label3.Location = new Point(118, 12);
+            label3.Name = "label3";
+            label3.Size = new Size(219, 25);
+            label3.TabIndex = 6;
+            label3.Text = "otomasyon sistemi v1.0";
             // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(236, 147);
+            ClientSize = new Size(366, 199);
             ControlBox = false;
+            Controls.Add(label3);
+            Controls.Add(pictureBox1);
             Controls.Add(btonLogin);
             Controls.Add(tboxUserPassw);
             Controls.Add(label2);
@@ -92,6 +119,8 @@
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Kullanıcı Giriş";
+            Load += frmLogin_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -103,5 +132,7 @@
         private Label label2;
         private TextBox tboxUserPassw;
         private Button btonLogin;
+        private PictureBox pictureBox1;
+        private Label label3;
     }
 }
