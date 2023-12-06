@@ -33,5 +33,12 @@ namespace NTier101_Live.PL
         {
             Application.Exit();
         }
+
+        private void bilgilerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            User.frmUser frmUser = new User.frmUser();
+
+            frmUser.ShowDialog();
+        }
     }
 }

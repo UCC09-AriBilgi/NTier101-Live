@@ -275,6 +275,7 @@
             Name = "frmUser";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Kullanıcı Bilgileri";
+            Load += frmUser_Load;
             ((System.ComponentModel.ISupportInitialize)dgrdUser).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
