@@ -134,7 +134,7 @@ namespace NTier101_Live
             }
             catch (SqlException e)
             {
-                MessageBox.Show("Hata : " + e.ToString);
+                MessageBox.Show("Hata : " + e.ToString());
 
                 return false;
 
