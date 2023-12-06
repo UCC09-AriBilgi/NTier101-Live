@@ -50,5 +50,10 @@ namespace NTier101_Live.PL.User
             tboxTCKimlik.Clear();
             tboxMudurlukID.Clear();
         }
+
+        private void frmUserInsert_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

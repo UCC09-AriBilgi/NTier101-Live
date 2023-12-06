@@ -145,6 +145,7 @@
             Name = "frmUserInsert";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmUserInsert";
+            Load += frmUserInsert_Load;
             ((System.ComponentModel.ISupportInitialize)dgrdUser).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
