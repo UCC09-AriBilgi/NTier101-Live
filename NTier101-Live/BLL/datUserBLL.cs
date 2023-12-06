@@ -21,6 +21,8 @@ namespace NTier101_Live.BLL
 
         public datUserPoco getQuery(string username,string userpassw)
         {
+            // Login ekranı için
+
             datUserPoco datUserPoco= new datUserPoco();
 
             DataTable dataTable= new DataTable();
@@ -35,6 +37,8 @@ namespace NTier101_Live.BLL
 
             return datUserPoco;
         } 
+
+
 
     }
 }
