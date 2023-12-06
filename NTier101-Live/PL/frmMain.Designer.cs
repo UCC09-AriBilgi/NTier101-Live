@@ -34,6 +34,8 @@
             yeniToolStripMenuItem = new ToolStripMenuItem();
             silToolStripMenuItem = new ToolStripMenuItem();
             güncelleToolStripMenuItem = new ToolStripMenuItem();
+            çıkışToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
             menuNTier.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,7 +61,7 @@
             // 
             // kullanıcıToolStripMenuItem
             // 
-            kullanıcıToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { yeniToolStripMenuItem, silToolStripMenuItem, güncelleToolStripMenuItem });
+            kullanıcıToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { yeniToolStripMenuItem, silToolStripMenuItem, güncelleToolStripMenuItem, toolStripSeparator1, çıkışToolStripMenuItem });
             kullanıcıToolStripMenuItem.Name = "kullanıcıToolStripMenuItem";
             kullanıcıToolStripMenuItem.Size = new Size(64, 20);
             kullanıcıToolStripMenuItem.Text = "Kullanıcı";
@@ -69,6 +71,7 @@
             yeniToolStripMenuItem.Name = "yeniToolStripMenuItem";
             yeniToolStripMenuItem.Size = new Size(180, 22);
             yeniToolStripMenuItem.Text = "Yeni";
+            yeniToolStripMenuItem.Click += yeniToolStripMenuItem_Click;
             // 
             // silToolStripMenuItem
             // 
@@ -81,6 +84,18 @@
             güncelleToolStripMenuItem.Name = "güncelleToolStripMenuItem";
             güncelleToolStripMenuItem.Size = new Size(180, 22);
             güncelleToolStripMenuItem.Text = "Güncelle";
+            // 
+            // çıkışToolStripMenuItem
+            // 
+            çıkışToolStripMenuItem.Name = "çıkışToolStripMenuItem";
+            çıkışToolStripMenuItem.Size = new Size(180, 22);
+            çıkışToolStripMenuItem.Text = "Çıkış";
+            çıkışToolStripMenuItem.Click += çıkışToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(177, 6);
             // 
             // frmMain
             // 
@@ -107,5 +122,7 @@
         private ToolStripMenuItem yeniToolStripMenuItem;
         private ToolStripMenuItem silToolStripMenuItem;
         private ToolStripMenuItem güncelleToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem çıkışToolStripMenuItem;
     }
 }

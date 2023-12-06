@@ -21,5 +21,17 @@ namespace NTier101_Live.PL
         {
             Application.Exit();
         }
+
+        private void yeniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            User.frmUserInsert frmUserInsert = new User.frmUserInsert();
+
+            frmUserInsert.ShowDialog();
+        }
+
+        private void çıkışToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -1,0 +1,1 @@
+﻿- (WO) frmInsertUser ekranına kayıdı yaptıktan sonra o anki varolan kullanıcıları gösteren  bir DG (datagrid) yapılacak.
