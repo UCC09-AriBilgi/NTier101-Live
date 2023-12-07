@@ -9,7 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace NTier101_Live.DAL
 {
-    // DB tabloları üzerinde gerekli işlemleri gerrçekleştiren bir sınıf
+    // DB tabloları üzerinde gerekli işlemleri gerçekleştiren bir sınıf
     // UserID-Passw e göre kullanıcıyı arama
     // Gelen bilgilere göre de
     // Insert,Update,Delete işlemlerini gerçekleştirecek
@@ -43,6 +43,24 @@ namespace NTier101_Live.DAL
             sqlParameters[1].Value = userPassw;
 
             return clsDBOperation.executeSelectQuery(Query,sqlParameters);
+        }
+
+        // İstenen Kullanıcıyı getirme
+        public DataTable getUser(int UserID)
+        {
+            string query;
+
+            query = "SELECT * FROM datUser WHERE UserID=@UserID";
+
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+
+            // Tanımlanıyor
+            sqlParameters[0] = new SqlParameter("UserID", SqlDbType.SmallInt);
+
+            // Değerler atanıyor??
+            sqlParameters[0].Value = Convert.ToString(UserID);
+
+            return clsDBOperation.executeSelectQuery(query,sqlParameters);
         }
 
         // Kullanıcı ekleme
