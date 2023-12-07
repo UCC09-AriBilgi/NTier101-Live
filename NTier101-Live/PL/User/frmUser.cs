@@ -17,17 +17,23 @@ namespace NTier101_Live.PL.User
 {
     public partial class frmUser : Form
     {
-        private datUserBLL datUserBLL;
+        private datUserBLL datUserBLL= new datUserBLL();
         private datUserPoco datUserPoco1;
 
-        public string query;
+        private SqlCommand query;
 
-        clsDBOperation clsDBOperation = new clsDBOperation();
+        public string Mode; // Kullanıcı üzerinde yapılacak işlemin ne olduğu (I;U;D)
+
+        public int UserID;
+
+
+        //clsDBOperation clsDBOperation = new clsDBOperation();
 
         public frmUser()
         {
             InitializeComponent();
         }
+
 
         private void btonClose_Click(object sender, EventArgs e)
         {
@@ -36,65 +42,48 @@ namespace NTier101_Live.PL.User
 
         private void frmUser_Load(object sender, EventArgs e)
         {
-            //grpbUser.Enabled = false;
 
-            query = "SELECT * FROM datUser WHERE UserID > 0"; // ?? parametrik
 
-            SqlParameter[] sqlParameters = new SqlParameter[1];
+            Mode = "";
 
-            // Tanımlanıyor
-            sqlParameters[0] = new SqlParameter("UserID", SqlDbType.SmallInt);
-            // Değerler atanıyor
-            sqlParameters[0].Value = 0;
+            tboxUserName.Clear();
+            tboxUserPassw.Clear();
+            tboxAd.Clear();
+            tboxSoyad.Clear();
+            tboxTCKimlik.Clear();
+            tboxMudurlukID.Clear();
 
-            clsDBOperation.executeSelectQuery(query, sqlParameters);
+            grpbUser.Enabled = false;
 
-            ShowRecords(); // DG yi dolduracak
+            ShowRecords();
         }
 
+
+        // DG yi dolduracak olan metot
         void ShowRecords()
         {
-            //DataTable datUser = new DataTable();
+            clsDBOperation conn = new clsDBOperation();
 
-            //SqlDataAdapter adapter = new SqlDataAdapter(query);
+            query = new SqlCommand("SELECT * FROM datUser", conn.Connection);
 
-            //adapter.Fill(datUser);
+            DataTable dataTable = new DataTable();
 
-            //BindingSource bindingSource = new BindingSource();
+            SqlDataAdapter adapter = new SqlDataAdapter(query);
 
-            //bindingSource.DataSource = datUser; // DG nin sourceu olarak kullanacağım...
+            adapter.Fill(dataTable);
 
-            //dgrdUser.DataSource = bindingSource;
+            BindingSource bindingSource = new BindingSource();
 
-            //-----------------
+            bindingSource.DataSource = dataTable;
 
-            using (SqlConnection connection = new SqlConnection(@"Data Source=BABEGT\SQLEXPRESS;Initial Catalog=NTier101Db;Integrated Security=True;TrustServerCertificate=True;"))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.CommandType = CommandType.Text;
+            dgrdUser.DataSource = bindingSource;
 
-                    using (SqlDataAdapter adapter1 = new SqlDataAdapter(command))
-                    {
-                        using (DataSet dset = new DataSet())
-                        {
-                            adapter1.Fill(dset);
 
-                            dgrdUser.DataSource = dset.Tables[0];
-
-                        }
-                    }
-                }
-
-            }
         }
 
         private void dgrdUser_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //query = new SqlCommand("SELECT * FROM datUser WHERE UserID=" + dgrdUser.CurrentRow.Cells[0].Value, clsDBOperation.Connection);
-
-
-
 
             grpbUser.Enabled = true;
 
@@ -209,6 +198,57 @@ namespace NTier101_Live.PL.User
             tboxSoyad.Clear();
             tboxTCKimlik.Clear();
             tboxMudurlukID.Clear();
+        }
+
+        private void pboxNew_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pboxNew_Click(object sender, EventArgs e)
+        {
+            Mode = "I"; // Insert modu
+
+            grpbUser.Enabled = true;
+
+            tboxUserName.Focus(); // fare imlecini ilgili kontrole koyuyor.
+        }
+
+        private void btonSave_Click_1(object sender, EventArgs e)
+        {
+            datUserPoco datUserPoco=new datUserPoco();
+
+            switch (Mode)
+            {
+                case "I":
+                    datUserPoco = datUserBLL.insertUser(tboxUserName.Text, tboxUserPassw.Text, tboxAd.Text, tboxSoyad.Text, tboxTCKimlik.Text, Convert.ToInt32(tboxMudurlukID.Text));
+
+                    MessageBox.Show("Kayıt işlemi başarılı...");
+
+                    break;
+
+                case "U":
+                    datUserPoco = datUserBLL.updateUser(Convert.ToInt32(dgrdUser.CurrentRow.Cells[0].Value),tboxUserName.Text, tboxUserPassw.Text, tboxAd.Text, tboxSoyad.Text, tboxTCKimlik.Text, Convert.ToInt32(tboxMudurlukID.Text));
+
+                    MessageBox.Show("Güncelleme işlemi başarılı...");
+
+                    break;
+                
+                case "D":
+                    datUserPoco = datUserBLL.deleteUser(Convert.ToInt32(dgrdUser.CurrentRow.Cells[0].Value));
+
+                    MessageBox.Show("Silme işlemi başarılı...");
+
+                    break;
+
+                default:
+                    break;
+            }
+
+            Temizle();
+
+            ShowRecords();
+
         }
     }
 }

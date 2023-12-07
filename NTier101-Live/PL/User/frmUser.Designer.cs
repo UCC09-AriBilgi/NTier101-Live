@@ -30,9 +30,7 @@
         {
             dgrdUser = new DataGridView();
             grpbUser = new GroupBox();
-            groupBox2 = new GroupBox();
-            btonUpdate = new Button();
-            btonDelete = new Button();
+            btonSave = new Button();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -45,14 +43,18 @@
             tboxSoyad = new TextBox();
             tboxMudurlukID = new TextBox();
             tboxTCKimlik = new TextBox();
-            btonSave = new Button();
             btonClose = new Button();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            pboxNew = new PictureBox();
+            pboxUpdate = new PictureBox();
+            pboxDelete = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgrdUser).BeginInit();
             grpbUser.SuspendLayout();
-            groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pboxNew).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pboxUpdate).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pboxDelete).BeginInit();
             SuspendLayout();
             // 
             // dgrdUser
@@ -65,14 +67,15 @@
             dgrdUser.ReadOnly = true;
             dgrdUser.RowHeadersVisible = false;
             dgrdUser.RowTemplate.Height = 25;
-            dgrdUser.Size = new Size(479, 150);
+            dgrdUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgrdUser.Size = new Size(622, 150);
             dgrdUser.TabIndex = 0;
             dgrdUser.CellContentClick += dgrdUser_CellContentClick;
             dgrdUser.CellContentDoubleClick += dgrdUser_CellContentDoubleClick;
             // 
             // grpbUser
             // 
-            grpbUser.Controls.Add(groupBox2);
+            grpbUser.Controls.Add(btonSave);
             grpbUser.Controls.Add(label7);
             grpbUser.Controls.Add(label6);
             grpbUser.Controls.Add(label5);
@@ -85,42 +88,23 @@
             grpbUser.Controls.Add(tboxSoyad);
             grpbUser.Controls.Add(tboxMudurlukID);
             grpbUser.Controls.Add(tboxTCKimlik);
-            grpbUser.Location = new Point(133, 197);
+            grpbUser.Location = new Point(133, 276);
             grpbUser.Name = "grpbUser";
             grpbUser.Size = new Size(479, 204);
             grpbUser.TabIndex = 10;
             grpbUser.TabStop = false;
             grpbUser.Text = "Kullanıcı Detay";
             // 
-            // groupBox2
+            // btonSave
             // 
-            groupBox2.Controls.Add(btonSave);
-            groupBox2.Controls.Add(btonUpdate);
-            groupBox2.Controls.Add(btonDelete);
-            groupBox2.Location = new Point(368, 67);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(105, 129);
-            groupBox2.TabIndex = 19;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "İşlemler";
-            // 
-            // btonUpdate
-            // 
-            btonUpdate.Location = new Point(16, 56);
-            btonUpdate.Name = "btonUpdate";
-            btonUpdate.Size = new Size(75, 23);
-            btonUpdate.TabIndex = 7;
-            btonUpdate.Text = "Güncelle";
-            btonUpdate.UseVisualStyleBackColor = true;
-            // 
-            // btonDelete
-            // 
-            btonDelete.Location = new Point(16, 88);
-            btonDelete.Name = "btonDelete";
-            btonDelete.Size = new Size(75, 23);
-            btonDelete.TabIndex = 8;
-            btonDelete.Text = "Sil";
-            btonDelete.UseVisualStyleBackColor = true;
+            btonSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btonSave.Location = new Point(398, 175);
+            btonSave.Name = "btonSave";
+            btonSave.Size = new Size(75, 23);
+            btonSave.TabIndex = 19;
+            btonSave.Text = "Kaydet";
+            btonSave.UseVisualStyleBackColor = true;
+            btonSave.Click += btonSave_Click_1;
             // 
             // label7
             // 
@@ -227,20 +211,10 @@
             tboxTCKimlik.Size = new Size(100, 23);
             tboxTCKimlik.TabIndex = 4;
             // 
-            // btonSave
-            // 
-            btonSave.Location = new Point(16, 22);
-            btonSave.Name = "btonSave";
-            btonSave.Size = new Size(75, 23);
-            btonSave.TabIndex = 6;
-            btonSave.Text = "Yeni";
-            btonSave.UseVisualStyleBackColor = true;
-            btonSave.Click += btonSave_Click;
-            // 
             // btonClose
             // 
             btonClose.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btonClose.Location = new Point(544, 407);
+            btonClose.Location = new Point(752, 476);
             btonClose.Name = "btonClose";
             btonClose.Size = new Size(75, 23);
             btonClose.TabIndex = 9;
@@ -268,12 +242,47 @@
             pictureBox1.TabIndex = 12;
             pictureBox1.TabStop = false;
             // 
+            // pboxNew
+            // 
+            pboxNew.Image = Properties.Resources.add_user;
+            pboxNew.Location = new Point(141, 199);
+            pboxNew.Name = "pboxNew";
+            pboxNew.Size = new Size(48, 51);
+            pboxNew.SizeMode = PictureBoxSizeMode.StretchImage;
+            pboxNew.TabIndex = 13;
+            pboxNew.TabStop = false;
+            pboxNew.Click += pboxNew_Click;
+            pboxNew.DoubleClick += pboxNew_DoubleClick;
+            // 
+            // pboxUpdate
+            // 
+            pboxUpdate.Image = Properties.Resources.edit_profile;
+            pboxUpdate.Location = new Point(217, 200);
+            pboxUpdate.Name = "pboxUpdate";
+            pboxUpdate.Size = new Size(53, 50);
+            pboxUpdate.SizeMode = PictureBoxSizeMode.StretchImage;
+            pboxUpdate.TabIndex = 14;
+            pboxUpdate.TabStop = false;
+            // 
+            // pboxDelete
+            // 
+            pboxDelete.Image = Properties.Resources.delete_user;
+            pboxDelete.Location = new Point(295, 200);
+            pboxDelete.Name = "pboxDelete";
+            pboxDelete.Size = new Size(52, 50);
+            pboxDelete.SizeMode = PictureBoxSizeMode.StretchImage;
+            pboxDelete.TabIndex = 15;
+            pboxDelete.TabStop = false;
+            // 
             // frmUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(631, 434);
+            ClientSize = new Size(839, 503);
             ControlBox = false;
+            Controls.Add(pboxDelete);
+            Controls.Add(pboxUpdate);
+            Controls.Add(pboxNew);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(btonClose);
@@ -286,8 +295,10 @@
             ((System.ComponentModel.ISupportInitialize)dgrdUser).EndInit();
             grpbUser.ResumeLayout(false);
             grpbUser.PerformLayout();
-            groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pboxNew).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pboxUpdate).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pboxDelete).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -296,12 +307,9 @@
 
         private DataGridView dgrdUser;
         private GroupBox grpbUser;
-        private Button btonDelete;
-        private Button btonUpdate;
         private TextBox tboxUserName;
         private TextBox tboxUserPassw;
         private TextBox tboxAd;
-        private Button btonSave;
         private TextBox tboxSoyad;
         private TextBox tboxMudurlukID;
         private TextBox tboxTCKimlik;
@@ -314,6 +322,9 @@
         private Label label4;
         private Label label3;
         private Label label2;
-        private GroupBox groupBox2;
+        private PictureBox pboxNew;
+        private PictureBox pboxUpdate;
+        private PictureBox pboxDelete;
+        private Button btonSave;
     }
 }
