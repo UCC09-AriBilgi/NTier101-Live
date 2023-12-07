@@ -31,12 +31,9 @@
             btonExit = new Button();
             menuNTier = new MenuStrip();
             kullanıcıToolStripMenuItem = new ToolStripMenuItem();
-            yeniToolStripMenuItem = new ToolStripMenuItem();
-            silToolStripMenuItem = new ToolStripMenuItem();
-            güncelleToolStripMenuItem = new ToolStripMenuItem();
+            bilgilerToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             çıkışToolStripMenuItem = new ToolStripMenuItem();
-            bilgilerToolStripMenuItem = new ToolStripMenuItem();
             menuNTier.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,54 +59,36 @@
             // 
             // kullanıcıToolStripMenuItem
             // 
-            kullanıcıToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { bilgilerToolStripMenuItem, yeniToolStripMenuItem, silToolStripMenuItem, güncelleToolStripMenuItem, toolStripSeparator1, çıkışToolStripMenuItem });
+            kullanıcıToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { bilgilerToolStripMenuItem, toolStripSeparator1, çıkışToolStripMenuItem });
             kullanıcıToolStripMenuItem.Name = "kullanıcıToolStripMenuItem";
             kullanıcıToolStripMenuItem.Size = new Size(64, 20);
             kullanıcıToolStripMenuItem.Text = "Kullanıcı";
             // 
-            // yeniToolStripMenuItem
+            // bilgilerToolStripMenuItem
             // 
-            yeniToolStripMenuItem.Name = "yeniToolStripMenuItem";
-            yeniToolStripMenuItem.Size = new Size(180, 22);
-            yeniToolStripMenuItem.Text = "Yeni";
-            yeniToolStripMenuItem.Click += yeniToolStripMenuItem_Click;
-            // 
-            // silToolStripMenuItem
-            // 
-            silToolStripMenuItem.Name = "silToolStripMenuItem";
-            silToolStripMenuItem.Size = new Size(180, 22);
-            silToolStripMenuItem.Text = "Sil";
-            // 
-            // güncelleToolStripMenuItem
-            // 
-            güncelleToolStripMenuItem.Name = "güncelleToolStripMenuItem";
-            güncelleToolStripMenuItem.Size = new Size(180, 22);
-            güncelleToolStripMenuItem.Text = "Güncelle";
+            bilgilerToolStripMenuItem.Name = "bilgilerToolStripMenuItem";
+            bilgilerToolStripMenuItem.Size = new Size(110, 22);
+            bilgilerToolStripMenuItem.Text = "Bilgiler";
+            bilgilerToolStripMenuItem.Click += bilgilerToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(107, 6);
             // 
             // çıkışToolStripMenuItem
             // 
             çıkışToolStripMenuItem.Name = "çıkışToolStripMenuItem";
-            çıkışToolStripMenuItem.Size = new Size(180, 22);
+            çıkışToolStripMenuItem.Size = new Size(110, 22);
             çıkışToolStripMenuItem.Text = "Çıkış";
             çıkışToolStripMenuItem.Click += çıkışToolStripMenuItem_Click;
-            // 
-            // bilgilerToolStripMenuItem
-            // 
-            bilgilerToolStripMenuItem.Name = "bilgilerToolStripMenuItem";
-            bilgilerToolStripMenuItem.Size = new Size(180, 22);
-            bilgilerToolStripMenuItem.Text = "Bilgiler";
-            bilgilerToolStripMenuItem.Click += bilgilerToolStripMenuItem_Click;
             // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(819, 450);
+            ControlBox = false;
             Controls.Add(btonExit);
             Controls.Add(menuNTier);
             MainMenuStrip = menuNTier;
@@ -127,9 +106,6 @@
         private Button btonExit;
         private MenuStrip menuNTier;
         private ToolStripMenuItem kullanıcıToolStripMenuItem;
-        private ToolStripMenuItem yeniToolStripMenuItem;
-        private ToolStripMenuItem silToolStripMenuItem;
-        private ToolStripMenuItem güncelleToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem çıkışToolStripMenuItem;
         private ToolStripMenuItem bilgilerToolStripMenuItem;

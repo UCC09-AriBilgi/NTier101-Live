@@ -244,6 +244,7 @@
             // 
             // pboxNew
             // 
+            pboxNew.Cursor = Cursors.Hand;
             pboxNew.Image = Properties.Resources.add_user;
             pboxNew.Location = new Point(141, 199);
             pboxNew.Name = "pboxNew";
@@ -256,6 +257,7 @@
             // 
             // pboxUpdate
             // 
+            pboxUpdate.Cursor = Cursors.Hand;
             pboxUpdate.Image = Properties.Resources.edit_profile;
             pboxUpdate.Location = new Point(217, 200);
             pboxUpdate.Name = "pboxUpdate";
@@ -263,9 +265,11 @@
             pboxUpdate.SizeMode = PictureBoxSizeMode.StretchImage;
             pboxUpdate.TabIndex = 14;
             pboxUpdate.TabStop = false;
+            pboxUpdate.Click += pboxUpdate_Click;
             // 
             // pboxDelete
             // 
+            pboxDelete.Cursor = Cursors.Hand;
             pboxDelete.Image = Properties.Resources.delete_user;
             pboxDelete.Location = new Point(295, 200);
             pboxDelete.Name = "pboxDelete";
@@ -273,6 +277,7 @@
             pboxDelete.SizeMode = PictureBoxSizeMode.StretchImage;
             pboxDelete.TabIndex = 15;
             pboxDelete.TabStop = false;
+            pboxDelete.Click += pboxDelete_Click;
             // 
             // frmUser
             // 

@@ -32,8 +32,6 @@ namespace NTier101_Live.PL
 
             datUserPocoScreen = datUserBLL.getQuery(tboxUserName.Text, tboxUserPassw.Text);
 
-
-
             if (datUserPocoScreen.UserName == null || datUserPocoScreen.UserPassw == null)
             {
                 MessageBox.Show("Hatalı giriş yaptınız lütfen kontrol ediniz...");
@@ -44,7 +42,7 @@ namespace NTier101_Live.PL
 
                 frmMain frmMain = new frmMain();
 
-                frmMain.Text= "Hoşgeldiniz sayın " + datUserPocoScreen.UserName;
+                frmMain.Text= "Hoşgeldiniz sayın " + datUserPocoScreen.Ad + " " + datUserPocoScreen.Soyad + " - "+ datUserPocoScreen.MudurlukID.ToString() + " - İyi çalışmalar dileriz...";
                 
                 frmMain.Show();
             }

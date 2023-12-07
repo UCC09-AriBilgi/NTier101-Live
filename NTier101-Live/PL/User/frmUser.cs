@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.SqlServer.Server;
 using NTier101_Live.BLL;
 using NTier101_Live.PocosL;
 using System;
@@ -17,7 +18,7 @@ namespace NTier101_Live.PL.User
 {
     public partial class frmUser : Form
     {
-        private datUserBLL datUserBLL= new datUserBLL();
+        private datUserBLL datUserBLL = new datUserBLL();
         private datUserPoco datUserPoco1;
 
         private SqlCommand query;
@@ -26,24 +27,23 @@ namespace NTier101_Live.PL.User
 
         public int UserID;
 
-
-        //clsDBOperation clsDBOperation = new clsDBOperation();
-
         public frmUser()
         {
             InitializeComponent();
         }
 
-
-        private void btonClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #region Form Methods
 
         private void frmUser_Load(object sender, EventArgs e)
         {
+            FormInit();
 
+            ShowRecords();
 
+        }
+
+        public void FormInit()
+        {
             Mode = "";
 
             tboxUserName.Clear();
@@ -57,6 +57,30 @@ namespace NTier101_Live.PL.User
 
             ShowRecords();
         }
+
+        #endregion
+
+        #region Button Events
+
+
+        #endregion
+
+        #region DataGrid Events
+
+
+        #endregion
+
+        #region General Methods
+
+
+        #endregion
+
+        private void btonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
 
 
         // DG yi dolduracak olan metot
@@ -214,9 +238,10 @@ namespace NTier101_Live.PL.User
             tboxUserName.Focus(); // fare imlecini ilgili kontrole koyuyor.
         }
 
-        private void btonSave_Click_1(object sender, EventArgs e)
+
+        private void IUD()
         {
-            datUserPoco datUserPoco=new datUserPoco();
+            datUserPoco datUserPoco = new datUserPoco();
 
             switch (Mode)
             {
@@ -228,12 +253,12 @@ namespace NTier101_Live.PL.User
                     break;
 
                 case "U":
-                    datUserPoco = datUserBLL.updateUser(Convert.ToInt32(dgrdUser.CurrentRow.Cells[0].Value),tboxUserName.Text, tboxUserPassw.Text, tboxAd.Text, tboxSoyad.Text, tboxTCKimlik.Text, Convert.ToInt32(tboxMudurlukID.Text));
+                    datUserPoco = datUserBLL.updateUser(Convert.ToInt32(dgrdUser.CurrentRow.Cells[0].Value), tboxUserName.Text, tboxUserPassw.Text, tboxAd.Text, tboxSoyad.Text, tboxTCKimlik.Text, Convert.ToInt32(tboxMudurlukID.Text));
 
                     MessageBox.Show("Güncelleme işlemi başarılı...");
 
                     break;
-                
+
                 case "D":
                     datUserPoco = datUserBLL.deleteUser(Convert.ToInt32(dgrdUser.CurrentRow.Cells[0].Value));
 
@@ -248,6 +273,44 @@ namespace NTier101_Live.PL.User
             Temizle();
 
             ShowRecords();
+        }
+
+        private void btonSave_Click_1(object sender, EventArgs e)
+        {
+            IUD();
+
+        }
+
+        private void pboxUpdate_Click(object sender, EventArgs e)
+        {
+            Mode = "U"; // Update modu
+
+            grpbUser.Enabled = true;
+
+            UserID = Convert.ToInt32(dgrdUser.CurrentRow.Cells[0].Value);
+
+            datUserPoco datUserPoco = new datUserPoco();
+
+            datUserPoco = datUserBLL.getUser(UserID); // UserID si belirli olan kaydı tablodan çekecek ve bunları ekranda boş duram componentlere dolduracağız...
+
+            tboxUserName.Text = datUserPoco.UserName;
+            tboxUserPassw.Text = datUserPoco.UserPassw;
+            tboxAd.Text = datUserPoco.Ad;
+            tboxSoyad.Text = datUserPoco.Soyad;
+            tboxTCKimlik.Text = datUserPoco.TCKimlik;
+            tboxMudurlukID.Text = datUserPoco.MudurlukID.ToString();
+
+
+            tboxUserName.Focus(); // fare imlecini ilgili kontrole koyuyor.
+        }
+
+        private void pboxDelete_Click(object sender, EventArgs e)
+        {
+            Mode = "D"; // Delete modu
+
+            UserID = Convert.ToInt32(dgrdUser.CurrentRow.Cells[0].Value);
+
+            IUD();
 
         }
     }

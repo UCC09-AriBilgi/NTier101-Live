@@ -61,6 +61,9 @@ namespace NTier101_Live.BLL
             {
                 datUserPoco.UserName = row["UserName"].ToString();
                 datUserPoco.UserPassw = row["UserPassw"].ToString();
+                datUserPoco.Ad = row["Ad"].ToString();
+                datUserPoco.Soyad = row["Soyad"].ToString();
+                datUserPoco.MudurlukID = Convert.ToInt32(row["MudurlukID"].ToString());
             }
 
             return datUserPoco; // varsa çağıran katmana gönder
