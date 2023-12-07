@@ -19,10 +19,12 @@ namespace NTier101_Live.BLL
             datUserDAO = new datUserDAO();
         }
 
+        // Parametrik sorgulama sonrası istenen kullanıcı kaydını getirme
+
+
+        // Login ekranından girilen bilgilere göre datUser tablosunda uygun bir kayıt var/yok?
         public datUserPoco getQuery(string username,string userpassw)
         {
-            // Login ekranı için
-
             datUserPoco datUserPoco= new datUserPoco();
 
             DataTable dataTable= new DataTable();
@@ -35,7 +37,7 @@ namespace NTier101_Live.BLL
                 datUserPoco.UserPassw = row["UserPassw"].ToString();
             }
 
-            return datUserPoco;
+            return datUserPoco; // varsa çağıran katmana gönder
         } 
 
         public datUserPoco insertUser(string UserName, string UserPassw,string Ad,string Soyad,string TCKimlik,int MudurlukID)
@@ -57,8 +59,5 @@ namespace NTier101_Live.BLL
 
             return datUserPoco;
         }
-
-
-
     }
 }
